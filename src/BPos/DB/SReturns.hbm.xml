@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 23, 2016 10:19:15 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="BPos.DB.SReturns" table="s_returns" catalog="b_pos" optimistic-lock="version">
+        <id name="idSReturns" type="java.lang.Integer">
+            <column name="idS_Returns" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="grn" class="BPos.DB.Grn" fetch="select">
+            <column name="GRN_GRN_id" not-null="true" />
+        </many-to-one>
+        <property name="dateTime" type="string">
+            <column name="dateTime" length="45" />
+        </property>
+        <set name="SReturnItemses" table="s_return_items" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="S_Returns_idS_Returns" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.SReturnItems" />
+        </set>
+    </class>
+</hibernate-mapping>

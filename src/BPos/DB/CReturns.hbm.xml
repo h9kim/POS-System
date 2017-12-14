@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 23, 2016 10:19:15 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="BPos.DB.CReturns" table="c_returns" catalog="b_pos" optimistic-lock="version">
+        <id name="idCReturns" type="java.lang.Integer">
+            <column name="idC_Returns" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="invoice" class="BPos.DB.Invoice" fetch="select">
+            <column name="Invoice_idInvoice" not-null="true" />
+        </many-to-one>
+        <property name="dateTime" type="string">
+            <column name="dateTime" length="100" />
+        </property>
+        <set name="CRetunItemses" table="c_retun_items" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="C_Returns_idC_Returns" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.CRetunItems" />
+        </set>
+    </class>
+</hibernate-mapping>

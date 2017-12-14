@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 23, 2016 10:19:15 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="BPos.DB.User" table="user" catalog="b_pos" optimistic-lock="version">
+        <id name="idUser" type="java.lang.Integer">
+            <column name="idUser" />
+            <generator class="identity" />
+        </id>
+        <property name="fname" type="string">
+            <column name="fname" length="45" />
+        </property>
+        <property name="lname" type="string">
+            <column name="lname" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="mobile" type="string">
+            <column name="mobile" length="45" />
+        </property>
+        <property name="lanNo" type="string">
+            <column name="lanNo" length="45" />
+        </property>
+        <property name="gender" type="string">
+            <column name="Gender" length="45" />
+        </property>
+        <set name="userLogins" table="user_login" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="User_id" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.UserLogin" />
+        </set>
+    </class>
+</hibernate-mapping>

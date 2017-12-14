@@ -1,0 +1,71 @@
+
+/**
+ *
+ * @author Bhagya
+ */
+//public class NewHibernateUtil {
+//
+//    private static final SessionFactory sessionFactory;
+//    private static String userName = "";
+//    private static String password = "";
+//
+//    static {
+//        try {
+//
+//            checkD();
+//
+//            Configuration configuration = new Configuration();
+//
+//            configuration.configure();
+//
+//            String url = "jdbc:mysql://localhost:3306/b_pos?zeroDateTimeBehavior=convertToNull";
+//
+//            configuration.setProperty("connection.driver_class", "com.mysql.jdbc.Driver");
+//            configuration.setProperty("hibernate.connection.url", url);
+//            configuration.setProperty("hibernate.connection.username", userName);
+//            configuration.setProperty("hibernate.connection.password", password);
+//            configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.OracleDialect");
+//            configuration.setProperty("hibernate.show_sql", "false");
+//            configuration.setProperty("hibernate.order_updates", "true");
+//            configuration.setProperty("c3p0.acquire_increment", "1");
+//            configuration.setProperty("c3p0.idle_test_period", "1200");
+//            configuration.setProperty("c3p0.min_size", "1");
+//            configuration.setProperty("c3p0.max_size", "5");
+//
+//            sessionFactory = configuration.buildSessionFactory();
+//
+//        } catch (Throwable ex) {
+//            // Log the exception. 
+//            System.err.println("Initial SessionFactory creation failed." + ex);
+//            throw new ExceptionInInitializerError(ex);
+//        }
+//    }
+//
+//    public static SessionFactory getSessionFactory() {
+//        return sessionFactory;
+//    }
+//
+//    public static void checkD() {
+//        try {
+//            InputStream in = new FileInputStream(new File("C:\\ProgramData\\WindowsLog.adxl"));
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+//            StringBuilder out = new StringBuilder();
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                out.append(line);
+//            }
+//            String s = out.toString();
+//            String g = Security.Security.decrypt(s);
+//            String a[] = g.split("_");
+//            userName = a[3];
+//            password = a[4];
+//            if (Security.DiskUtils.getDiskCode().equals(a[1]) && Security.App.getMacAddress().equals(a[0])) {
+//            } else {
+//                System.exit(0);
+//            }
+//
+//            reader.close();
+//        } catch (Exception e) {
+//        }
+//    }
+//}

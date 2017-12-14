@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/b_pos?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">bhagya</property>
+    <mapping resource="BPos/DB/UsertypeHasWindow.hbm.xml"/>
+    <mapping resource="BPos/DB/Stock.hbm.xml"/>
+    <mapping resource="BPos/DB/Discount.hbm.xml"/>
+    <mapping resource="BPos/DB/UserLogin.hbm.xml"/>
+    <mapping resource="BPos/DB/Invoice.hbm.xml"/>
+    <mapping resource="BPos/DB/CRetunItems.hbm.xml"/>
+    <mapping resource="BPos/DB/GrnCredit.hbm.xml"/>
+    <mapping resource="BPos/DB/Grn.hbm.xml"/>
+    <mapping resource="BPos/DB/Customer.hbm.xml"/>
+    <mapping resource="BPos/DB/UserType.hbm.xml"/>
+    <mapping resource="BPos/DB/Stockupdated.hbm.xml"/>
+    <mapping resource="BPos/DB/PaymentType.hbm.xml"/>
+    <mapping resource="BPos/DB/QtyType.hbm.xml"/>
+    <mapping resource="BPos/DB/InvoiceItem.hbm.xml"/>
+    <mapping resource="BPos/DB/Supplierduerecords.hbm.xml"/>
+    <mapping resource="BPos/DB/Supplier.hbm.xml"/>
+    <mapping resource="BPos/DB/Customerduerecords.hbm.xml"/>
+    <mapping resource="BPos/DB/SReturnItems.hbm.xml"/>
+    <mapping resource="BPos/DB/SupplierDue.hbm.xml"/>
+    <mapping resource="BPos/DB/Products.hbm.xml"/>
+    <mapping resource="BPos/DB/SReturns.hbm.xml"/>
+    <mapping resource="BPos/DB/CustomerDue.hbm.xml"/>
+    <mapping resource="BPos/DB/UserWindow.hbm.xml"/>
+    <mapping resource="BPos/DB/InvoiceCredit.hbm.xml"/>
+    <mapping resource="BPos/DB/CReturns.hbm.xml"/>
+    <mapping resource="BPos/DB/GrnItem.hbm.xml"/>
+    <mapping resource="BPos/DB/Qtyloosing.hbm.xml"/>
+    <mapping resource="BPos/DB/User.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

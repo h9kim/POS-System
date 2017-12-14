@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 23, 2016 10:19:15 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="BPos.DB.SupplierDue" table="supplier_due" catalog="b_pos" optimistic-lock="version">
+        <id name="idSupplierDue" type="java.lang.Integer">
+            <column name="idSupplier_Due" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="grn" class="BPos.DB.Grn" fetch="select">
+            <column name="GRN_GRN_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="supplier" class="BPos.DB.Supplier" fetch="select">
+            <column name="Supplier_idSupplier" not-null="true" />
+        </many-to-one>
+        <property name="total" type="java.lang.Double">
+            <column name="total" precision="22" scale="0" />
+        </property>
+        <property name="dueamount" type="java.lang.Double">
+            <column name="dueamount" precision="22" scale="0" />
+        </property>
+        <set name="supplierduerecordses" table="supplierduerecords" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Supplier_Due_idSupplier_Due" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.Supplierduerecords" />
+        </set>
+    </class>
+</hibernate-mapping>

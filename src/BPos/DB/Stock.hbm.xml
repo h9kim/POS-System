@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 23, 2016 10:19:15 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="BPos.DB.Stock" table="stock" catalog="b_pos" optimistic-lock="version">
+        <id name="idstock" type="java.lang.Integer">
+            <column name="idstock" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="products" class="BPos.DB.Products" fetch="select">
+            <column name="Products_idProducts" not-null="true" />
+        </many-to-one>
+        <many-to-one name="qtyType" class="BPos.DB.QtyType" fetch="select">
+            <column name="Qty_Type_id" not-null="true" />
+        </many-to-one>
+        <property name="buyingPrice" type="java.lang.Double">
+            <column name="Buying_Price" precision="22" scale="0" />
+        </property>
+        <property name="sellingPrice" type="java.lang.Double">
+            <column name="Selling_price" precision="22" scale="0" />
+        </property>
+        <property name="qty" type="java.lang.Double">
+            <column name="qty" precision="22" scale="0" />
+        </property>
+        <property name="buyDate" type="string">
+            <column name="buyDate" length="45" />
+        </property>
+        <property name="exdate" type="string">
+            <column name="exdate" length="45" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" />
+        </property>
+        <property name="discount" type="java.lang.Double">
+            <column name="discount" precision="22" scale="0" />
+        </property>
+        <property name="canloosing" type="java.lang.Integer">
+            <column name="canloosing" />
+        </property>
+        <set name="invoiceItems" table="invoice_item" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stock_idstock" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.InvoiceItem" />
+        </set>
+        <set name="qtyloosings" table="qtyloosing" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stock_idstock" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.Qtyloosing" />
+        </set>
+        <set name="stockupdateds" table="stockupdated" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stock_idstock" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.Stockupdated" />
+        </set>
+        <set name="grnItems" table="grn_item" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stock_idstock" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.GrnItem" />
+        </set>
+    </class>
+</hibernate-mapping>

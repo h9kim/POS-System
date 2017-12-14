@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 23, 2016 10:19:15 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="BPos.DB.PaymentType" table="payment_type" catalog="b_pos" optimistic-lock="version">
+        <id name="idPaymentType" type="java.lang.Integer">
+            <column name="idPayment_Type" />
+            <generator class="identity" />
+        </id>
+        <property name="typename" type="string">
+            <column name="typename" length="45" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" />
+        </property>
+        <set name="invoices" table="invoice" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Payment_Type_idPayment_Type" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.Invoice" />
+        </set>
+        <set name="grns" table="grn" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Payment_Type" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.Grn" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 23, 2016 10:19:15 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="BPos.DB.GrnCredit" table="grn_credit" catalog="b_pos" optimistic-lock="version">
+        <id name="idGrnCredit" type="java.lang.Integer">
+            <column name="idGrnCredit" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="grn" class="BPos.DB.Grn" fetch="select">
+            <column name="GRN_GRN_id" not-null="true" />
+        </many-to-one>
+        <property name="dateTime" type="string">
+            <column name="dateTime" length="45" />
+        </property>
+        <property name="amount" type="java.lang.Double">
+            <column name="amount" precision="22" scale="0" />
+        </property>
+        <property name="isPaid" type="java.lang.Integer">
+            <column name="isPaid" />
+        </property>
+    </class>
+</hibernate-mapping>

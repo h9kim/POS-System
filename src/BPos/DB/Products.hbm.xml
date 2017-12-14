@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 23, 2016 10:19:15 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="BPos.DB.Products" table="products" catalog="b_pos" optimistic-lock="version">
+        <id name="idProducts" type="java.lang.Integer">
+            <column name="idProducts" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="discount" class="BPos.DB.Discount" fetch="select">
+            <column name="Discount_idDiscount" not-null="true" />
+        </many-to-one>
+        <many-to-one name="qtyType" class="BPos.DB.QtyType" fetch="select">
+            <column name="Qty_Type_idQty_Type" not-null="true" />
+        </many-to-one>
+        <property name="proName" type="string">
+            <column name="proName" length="45" />
+        </property>
+        <property name="proItrmCode" type="string">
+            <column name="ProItrmCode" length="45" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="45" />
+        </property>
+        <property name="barcode" type="string">
+            <column name="barcode" length="45" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" />
+        </property>
+        <set name="CRetunItemses" table="c_retun_items" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Products_idProducts" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.CRetunItems" />
+        </set>
+        <set name="SReturnItemses" table="s_return_items" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Products_idProducts" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.SReturnItems" />
+        </set>
+        <set name="qtyloosings" table="qtyloosing" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Products_idProducts" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.Qtyloosing" />
+        </set>
+        <set name="grnItems" table="grn_item" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Products_idProducts" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.GrnItem" />
+        </set>
+        <set name="stocks" table="stock" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Products_idProducts" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.Stock" />
+        </set>
+    </class>
+</hibernate-mapping>

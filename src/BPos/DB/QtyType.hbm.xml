@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 23, 2016 10:19:15 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="BPos.DB.QtyType" table="qty_type" catalog="b_pos" optimistic-lock="version">
+        <id name="idQtyType" type="java.lang.Integer">
+            <column name="idQty_Type" />
+            <generator class="identity" />
+        </id>
+        <property name="typeName" type="string">
+            <column name="typeName" length="45" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="Status" />
+        </property>
+        <set name="stocks" table="stock" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Qty_Type_id" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.Stock" />
+        </set>
+        <set name="productses" table="products" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Qty_Type_idQty_Type" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.Products" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 23, 2016 10:19:15 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="BPos.DB.CRetunItems" table="c_retun_items" catalog="b_pos" optimistic-lock="version">
+        <id name="idCRetunItems" type="java.lang.Integer">
+            <column name="idC_Retun_Items" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="CReturns" class="BPos.DB.CReturns" fetch="select">
+            <column name="C_Returns_idC_Returns" not-null="true" />
+        </many-to-one>
+        <many-to-one name="products" class="BPos.DB.Products" fetch="select">
+            <column name="Products_idProducts" not-null="true" />
+        </many-to-one>
+        <property name="reason" type="string">
+            <column name="reason" length="450" />
+        </property>
+        <property name="qty" type="java.lang.Double">
+            <column name="qty" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

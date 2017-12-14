@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 23, 2016 10:19:15 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="BPos.DB.Discount" table="discount" catalog="b_pos" optimistic-lock="version">
+        <id name="idDiscount" type="java.lang.Integer">
+            <column name="idDiscount" />
+            <generator class="identity" />
+        </id>
+        <property name="value" type="java.lang.Integer">
+            <column name="value" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" />
+        </property>
+        <set name="productses" table="products" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Discount_idDiscount" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.Products" />
+        </set>
+        <set name="invoices" table="invoice" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Discount_idDiscount" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.Invoice" />
+        </set>
+    </class>
+</hibernate-mapping>

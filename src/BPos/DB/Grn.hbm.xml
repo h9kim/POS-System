@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 23, 2016 10:19:15 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="BPos.DB.Grn" table="grn" catalog="b_pos" optimistic-lock="version">
+        <id name="grnId" type="java.lang.Integer">
+            <column name="GRN_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="paymentType" class="BPos.DB.PaymentType" fetch="select">
+            <column name="Payment_Type" not-null="true" />
+        </many-to-one>
+        <many-to-one name="supplier" class="BPos.DB.Supplier" fetch="select">
+            <column name="Supplier_idSupplier" not-null="true" />
+        </many-to-one>
+        <property name="dateTime" type="string">
+            <column name="dateTime" length="45" />
+        </property>
+        <property name="totalAmount" type="java.lang.Double">
+            <column name="totalAmount" precision="22" scale="0" />
+        </property>
+        <set name="grnItems" table="grn_item" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="GRN_GRN_id" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.GrnItem" />
+        </set>
+        <set name="grnCredits" table="grn_credit" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="GRN_GRN_id" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.GrnCredit" />
+        </set>
+        <set name="supplierDues" table="supplier_due" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="GRN_GRN_id" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.SupplierDue" />
+        </set>
+        <set name="SReturnses" table="s_returns" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="GRN_GRN_id" not-null="true" />
+            </key>
+            <one-to-many class="BPos.DB.SReturns" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 23, 2016 10:19:15 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="BPos.DB.GrnItem" table="grn_item" catalog="b_pos" optimistic-lock="version">
+        <id name="idGrnItem" type="java.lang.Integer">
+            <column name="idGRN_Item" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="grn" class="BPos.DB.Grn" fetch="select">
+            <column name="GRN_GRN_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="products" class="BPos.DB.Products" fetch="select">
+            <column name="Products_idProducts" not-null="true" />
+        </many-to-one>
+        <many-to-one name="stock" class="BPos.DB.Stock" fetch="select">
+            <column name="stock_idstock" not-null="true" />
+        </many-to-one>
+        <property name="unitPrice" type="java.lang.Double">
+            <column name="unitPrice" precision="22" scale="0" />
+        </property>
+        <property name="qty" type="java.lang.Double">
+            <column name="qty" precision="22" scale="0" />
+        </property>
+        <property name="subTotal" type="java.lang.Double">
+            <column name="subTotal" precision="22" scale="0" />
+        </property>
+        <property name="sellingPrice" type="java.lang.Double">
+            <column name="sellingPrice" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

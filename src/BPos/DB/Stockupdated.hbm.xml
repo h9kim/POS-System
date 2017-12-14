@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 23, 2016 10:19:15 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="BPos.DB.Stockupdated" table="stockupdated" catalog="b_pos" optimistic-lock="version">
+        <id name="idStockUpdated" type="java.lang.Integer">
+            <column name="idStockUpdated" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="stock" class="BPos.DB.Stock" fetch="select">
+            <column name="stock_idstock" not-null="true" />
+        </many-to-one>
+        <property name="reason" type="string">
+            <column name="reason" length="1000" />
+        </property>
+        <property name="datetime" type="string">
+            <column name="datetime" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
